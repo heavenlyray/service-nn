@@ -86,11 +86,28 @@
 
     .nav-links a {
       color: #d0d0d0;
-      transition: 0.3s;
+      transition: 0.35s ease;
+      position: relative;
+      padding-bottom: 6px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      background: white;
+      transition: width 0.35s ease;
     }
 
     .nav-links a:hover {
       color: white;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     .hero {
@@ -134,7 +151,7 @@
       padding: 18px 34px;
       border-radius: 18px;
       font-weight: 600;
-      transition: 0.3s;
+      transition: all 0.35s ease;
       display: inline-block;
     }
 
@@ -144,7 +161,8 @@
     }
 
     .btn-primary:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 18px 50px rgba(255,255,255,0.12);
     }
 
     .btn-secondary {
@@ -154,9 +172,11 @@
 
     .btn-secondary:hover {
       background: rgba(255,255,255,0.08);
+      transform: translateY(-5px);
     }
 
     .phone {
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
       width: 360px;
       height: 720px;
       margin: auto;
@@ -165,6 +185,11 @@
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 40px 120px rgba(0,0,0,0.5);
       animation: float 5s ease-in-out infinite;
+    }
+
+    .phone:hover {
+      transform: scale(1.03) rotate(-1deg);
+      box-shadow: 0 60px 140px rgba(255,255,255,0.08);
     }
 
     .phone img {
@@ -265,11 +290,13 @@
     .review-card:hover,
     .faq-item:hover,
     .stat:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 80px rgba(255,255,255,0.08);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 90px rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.18);
     }
 
     .icon {
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
       width: 80px;
       height: 80px;
       border-radius: 20px;
@@ -282,12 +309,37 @@
       margin-bottom: 25px;
     }
 
+    .card:hover .icon,
+    .contact-mini:hover .icon {
+      transform: scale(1.08) rotate(-6deg);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.18);
+    }
+
     .card h3 {
       margin-bottom: 15px;
       font-size: 28px;
     }
 
     .card p,
+    .review-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .review-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), transparent 50%);
+      opacity: 0;
+      transition: 0.4s ease;
+      pointer-events: none;
+    }
+
+    .review-card:hover::before {
+      opacity: 1;
+    }
+
     .review-card p,
     .faq-answer {
       color: var(--muted);
@@ -362,6 +414,7 @@
     }
 
     input {
+      transition: all 0.35s ease;
       padding: 20px;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.08);
@@ -369,6 +422,12 @@
       color: white;
       font-size: 16px;
       outline: none;
+    }
+
+    input:focus {
+      border-color: rgba(255,255,255,0.22);
+      transform: scale(1.01);
+      background: rgba(255,255,255,0.05);
     }
 
     footer {
