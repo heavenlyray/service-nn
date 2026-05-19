@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
 
@@ -19,13 +19,10 @@
 
     :root {
       --bg: #050505;
-      --bg2: #0d0d0d;
       --card: rgba(255,255,255,0.03);
       --border: rgba(255,255,255,0.08);
       --text: #ffffff;
       --muted: #a8a8a8;
-      --accent: #ffffff;
-      --shadow: rgba(255,255,255,0.08);
     }
 
     html {
@@ -33,28 +30,17 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(180deg, #050505, #0d0d0d);
-      color: var(--text);
+      font-family: 'Times New Roman', serif;
+      background: #050505;
+      color: white;
       overflow-x: hidden;
-      position: relative;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(255,255,255,0.03), transparent 30%);
-      z-index: -2;
     }
 
     canvas {
       position: fixed;
       inset: 0;
       z-index: -1;
-      opacity: 0.45;
+      opacity: 0.4;
     }
 
     a {
@@ -68,8 +54,7 @@
     }
 
     section {
-      padding: 130px 0;
-      position: relative;
+      padding: 120px 0;
     }
 
     header {
@@ -78,14 +63,8 @@
       top: 0;
       z-index: 1000;
       backdrop-filter: blur(18px);
-      background: rgba(5,5,5,0.55);
+      background: rgba(5,5,5,0.7);
       border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: 0.35s ease;
-    }
-
-    header.scrolled {
-      background: rgba(5,5,5,0.9);
-      box-shadow: 0 10px 50px rgba(0,0,0,0.45);
     }
 
     nav {
@@ -98,8 +77,6 @@
     .logo {
       font-size: 30px;
       font-weight: 900;
-      letter-spacing: -1px;
-      color: white;
     }
 
     .nav-links {
@@ -109,79 +86,42 @@
 
     .nav-links a {
       color: #d0d0d0;
-      font-weight: 500;
-      position: relative;
       transition: 0.3s;
     }
 
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      background: white;
-      left: 0;
-      bottom: -8px;
-      transition: 0.3s;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
+    .nav-links a:hover {
+      color: white;
     }
 
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      overflow: hidden;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: center;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 18px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 999px;
-      margin-bottom: 30px;
-      backdrop-filter: blur(12px);
-      animation: fadeIn 1.2s ease;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 15px white;
-    }
-
     .hero h1 {
-      font-size: clamp(58px, 7vw, 110px);
-      line-height: 0.92;
+      font-size: clamp(60px, 8vw, 110px);
+      line-height: 0.9;
       font-weight: 900;
-      letter-spacing: -5px;
       margin-bottom: 30px;
     }
 
     .hero h1 span {
-      color: #7f7f7f;
+      color: #888;
     }
 
     .hero p {
       color: var(--muted);
       font-size: 21px;
       line-height: 1.8;
-      max-width: 700px;
-      margin-bottom: 45px;
+      margin-bottom: 40px;
     }
 
     .hero-buttons {
@@ -192,65 +132,38 @@
 
     .btn {
       padding: 18px 34px;
-      border-radius: 20px;
+      border-radius: 18px;
       font-weight: 600;
-      transition: all 0.35s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      cursor: pointer;
+      transition: 0.3s;
+      display: inline-block;
     }
 
     .btn-primary {
       background: white;
       color: black;
-      box-shadow: 0 10px 40px rgba(255,255,255,0.12);
     }
 
     .btn-primary:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 25px 80px rgba(255,255,255,0.18);
+      transform: translateY(-5px);
     }
 
     .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: white;
-      backdrop-filter: blur(12px);
     }
 
     .btn-secondary:hover {
-      transform: translateY(-6px);
       background: rgba(255,255,255,0.08);
     }
 
-    .hero-visual {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .glow {
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
-      filter: blur(40px);
-      animation: pulse 6s infinite ease-in-out;
-    }
-
     .phone {
-      position: relative;
       width: 360px;
       height: 720px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 45px;
-      backdrop-filter: blur(18px);
+      margin: auto;
+      border-radius: 40px;
       overflow: hidden;
-      box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.5);
       animation: float 5s ease-in-out infinite;
     }
 
@@ -266,16 +179,14 @@
     }
 
     .section-title h2 {
-      font-size: clamp(42px, 5vw, 72px);
+      font-size: clamp(42px, 5vw, 70px);
       margin-bottom: 20px;
-      letter-spacing: -2px;
     }
 
     .section-title p {
+      color: var(--muted);
       max-width: 800px;
       margin: auto;
-      color: var(--muted);
-      font-size: 19px;
       line-height: 1.8;
     }
 
@@ -285,45 +196,99 @@
       gap: 30px;
     }
 
-    .card, .faq-item, .review-card, .form-box {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
+    .card,
+    .review-card,
+    .faq-item,
+    .form-box,
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 30px;
       backdrop-filter: blur(14px);
-      border-radius: 32px;
-      transition: all 0.45s ease;
+      transition: 0.35s;
     }
 
-    .card {
-      padding: 42px;
-      position: relative;
-      overflow: hidden;
+    .card,
+    .review-card,
+    .faq-item {
+      padding: 35px;
     }
 
-    .card:hover, .review-card:hover, .faq-item:hover, .form-box:hover {
-      transform: translateY(-10px);
+    .contact-mini {
+      padding: 10px 28px !important;
+      border-radius: 18px;
+      width: min(100%, 620px);
+      min-height: 68px;
+      margin: 0 auto;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .contact-mini .icon {
+      width: 36px;
+      height: 36px;
+      font-size: 16px;
+      margin: 0;
+      flex-shrink: 0;
+      display: flex;
+    }
+
+    .contact-mini h3 {
+      font-size: 14px;
+      margin-bottom: 0px;
+      margin-top: 4px;
+      color: #cfcfcf;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0px;
+      text-transform: none;
+    }
+
+    .contact-mini .btn {
+      padding: 8px 14px;
+      font-size: 13px;
+      border-radius: 10px;
+      box-shadow: none;
+      white-space: nowrap;
+    }
+
+    .contact-mini .btn:hover {
+      transform: none;
+      opacity: 0.7;
+    }
+
+    .card:hover,
+    .review-card:hover,
+    .faq-item:hover,
+    .stat:hover {
+      transform: translateY(-8px);
       box-shadow: 0 20px 80px rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.16);
     }
 
     .icon {
       width: 80px;
       height: 80px;
-      border-radius: 22px;
-      background: linear-gradient(135deg, #fff, #888);
+      border-radius: 20px;
+      background: linear-gradient(135deg, white, #777);
+      color: black;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 34px;
+      font-size: 32px;
       margin-bottom: 25px;
-      color: black;
     }
 
     .card h3 {
+      margin-bottom: 15px;
       font-size: 28px;
-      margin-bottom: 18px;
     }
 
-    .card p, .review-card p {
+    .card p,
+    .review-card p,
+    .faq-answer {
       color: var(--muted);
       line-height: 1.8;
     }
@@ -335,65 +300,33 @@
     }
 
     .stat {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(14px);
-      border-radius: 32px;
-      padding: 55px 30px;
       text-align: center;
-      transition: 0.35s;
-    }
-
-    .stat:hover {
-      transform: scale(1.04);
+      padding: 50px 30px;
     }
 
     .stat h3 {
       font-size: 68px;
-      color: white;
       margin-bottom: 10px;
     }
 
     .faq {
-      max-width: 950px;
-      margin: auto;
       display: flex;
       flex-direction: column;
       gap: 20px;
-    }
-
-    .faq-item {
-      padding: 28px;
-      cursor: pointer;
+      max-width: 950px;
+      margin: auto;
     }
 
     .faq-question {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 22px;
-      font-weight: 600;
-    }
-
-    .faq-answer {
-      display: none;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-top: 20px;
-    }
-
-    .faq-item.active .faq-answer {
-      display: block;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 15px;
     }
 
     .reviews {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
-    }
-
-    .review-card {
-      padding: 35px;
     }
 
     .review-user {
@@ -408,11 +341,6 @@
       height: 55px;
       border-radius: 50%;
       background: linear-gradient(135deg, white, #666);
-    }
-
-    .review-user h4 {
-      font-size: 20px;
-      margin-bottom: 5px;
     }
 
     .review-user span {
@@ -433,7 +361,6 @@
     }
 
     input {
-      width: 100%;
       padding: 20px;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.08);
@@ -441,12 +368,6 @@
       color: white;
       font-size: 16px;
       outline: none;
-      transition: 0.3s;
-    }
-
-    input:focus {
-      border-color: rgba(255,255,255,0.3);
-      transform: scale(1.01);
     }
 
     footer {
@@ -459,17 +380,13 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 30px;
-    }
-
-    footer p {
-      color: #7d8799;
+      gap: 20px;
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(60px);
-      transition: all 1.2s ease;
+      transform: translateY(50px);
+      transition: all 1s ease;
     }
 
     .reveal.active {
@@ -483,24 +400,7 @@
       100% { transform: translateY(0px); }
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.7; }
-      50% { transform: scale(1.15); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.7; }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media(max-width: 1100px) {
+    @media(max-width: 1000px) {
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
@@ -508,11 +408,6 @@
 
       .hero-buttons {
         justify-content: center;
-      }
-
-      .hero p {
-        margin-left: auto;
-        margin-right: auto;
       }
     }
 
@@ -529,10 +424,6 @@
       section {
         padding: 90px 0;
       }
-
-      .form-box {
-        padding: 30px;
-      }
     }
 
   </style>
@@ -541,7 +432,7 @@
 
 <canvas id="particles"></canvas>
 
-<header id="header">
+<header>
   <div class="container">
     <nav>
       <div class="logo">SmartService NN</div>
@@ -550,7 +441,7 @@
         <a href="#about">О сервисе</a>
         <a href="#features">Возможности</a>
         <a href="#stats">Статистика</a>
-        <a href="#contact">Контакты</a>
+        <a href="#footer-contacts">Контакты</a>
       </div>
     </nav>
   </div>
@@ -559,13 +450,7 @@
 <section class="hero">
   <div class="container hero-grid">
 
-    <div class="reveal">
-
-      <div class="hero-badge">
-        <div class="dot"></div>
-        <span>Новая цифровая платформа для автосервисов</span>
-      </div>
-
+    <div class="reveal active">
       <h1>
         Будущее
         <span>автосервисов</span>
@@ -578,18 +463,13 @@
       </p>
 
       <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary">Попробовать сервис</a>
+        <a href="#access" class="btn btn-primary">Попробовать сервис</a>
         <a href="#features" class="btn btn-secondary">Изучить возможности</a>
       </div>
-
     </div>
 
-    <div class="hero-visual reveal">
-      <div class="glow"></div>
-
-      <div class="phone">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop" alt="phone">
-      </div>
+    <div class="phone reveal active">
+      <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?q=80&w=1200&auto=format&fit=crop" alt="phone">
     </div>
 
   </div>
@@ -600,45 +480,35 @@
 
     <div class="section-title reveal">
       <h2>Почему SmartService?</h2>
-
       <p>
-        Платформа объединяет автосервисы и водителей в единую digital-экосистему,
-        где можно быстро найти СТО, записаться онлайн и контролировать ремонт.
+        Платформа объединяет автосервисы и водителей в единую digital-экосистему.
       </p>
     </div>
 
-    <div class="grid">
+    <div class="grid" style="display:flex; justify-content:center; gap:18px; flex-wrap:wrap;">
 
       <div class="card reveal">
         <div class="icon">🚗</div>
         <h3>Поиск сервисов</h3>
-        <p>
-          Удобный поиск СТО по рейтингу, стоимости и расположению.
-        </p>
+        <p>Удобный поиск СТО по рейтингу и расположению.</p>
       </div>
 
       <div class="card reveal">
         <div class="icon">📅</div>
         <h3>Онлайн-запись</h3>
-        <p>
-          Записывайтесь в автосервис за несколько секунд без звонков.
-        </p>
+        <p>Записывайтесь в автосервис за несколько секунд.</p>
       </div>
 
       <div class="card reveal">
         <div class="icon">📸</div>
         <h3>Фотоотчеты</h3>
-        <p>
-          Получайте фото и видео выполненных работ прямо в приложении.
-        </p>
+        <p>Получайте фото и видео выполненных работ.</p>
       </div>
 
       <div class="card reveal">
         <div class="icon">📊</div>
         <h3>История обслуживания</h3>
-        <p>
-          Вся история ремонта автомобиля хранится в одном месте.
-        </p>
+        <p>Вся история ремонта хранится в одном месте.</p>
       </div>
 
     </div>
@@ -650,9 +520,8 @@
 
     <div class="section-title reveal">
       <h2>Возможности платформы</h2>
-
       <p>
-        SmartService NN — полноценная система для автовладельцев и автосервисов.
+        Полноценная система для водителей и автосервисов.
       </p>
     </div>
 
@@ -661,25 +530,19 @@
       <div class="card reveal">
         <div class="icon">⚡</div>
         <h3>Для водителей</h3>
-        <p>
-          Находите проверенные сервисы, сравнивайте отзывы и контролируйте процесс ремонта.
-        </p>
+        <p>Отзывы, онлайн-запись и контроль ремонта.</p>
       </div>
 
       <div class="card reveal">
         <div class="icon">🛠</div>
         <h3>Для автосервисов</h3>
-        <p>
-          CRM-система, онлайн-календарь, база клиентов и автоматизация записи.
-        </p>
+        <p>CRM, база клиентов и управление записями.</p>
       </div>
 
       <div class="card reveal">
         <div class="icon">🔒</div>
         <h3>Прозрачность</h3>
-        <p>
-          Фотоотчеты, цифровая история автомобиля и согласование работ через приложение.
-        </p>
+        <p>Фотоотчеты и цифровая история автомобиля.</p>
       </div>
 
     </div>
@@ -691,10 +554,7 @@
 
     <div class="section-title reveal">
       <h2>Рынок проекта</h2>
-
-      <p>
-        Нижний Новгород — перспективный рынок для цифровизации автосервисов.
-      </p>
+      <p>Нижний Новгород — перспективный рынок для цифровизации.</p>
     </div>
 
     <div class="stats">
@@ -723,107 +583,57 @@
   </div>
 </section>
 
+
+
 <section>
-  <div class="container">
-
-    <div class="cta reveal" id="contact">
-
-      <h2>
-        Готовы к новому уровню
-        автосервисов?
-      </h2>
-
-      <p>
-        SmartService NN помогает водителям экономить время,
-        а автосервисам — автоматизировать работу и привлекать клиентов.
-      </p>
-
-      <div style="display:flex; flex-direction:column; gap:18px; align-items:center; margin-top:20px;">
-
-      <a href="https://t.me/o_0u_u" target="_blank" class="btn btn-primary">
-        Лендинг — @o_0u_u
-      </a>
-
-      <a href="https://t.me/Yurii_K123" target="_blank" class="btn btn-secondary">
-        CEO — @Yurii_K123
-      </a>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<section id="faq-section">
   <div class="container">
 
     <div class="section-title reveal">
       <h2>FAQ</h2>
-      <p>
-        Ответы на популярные вопросы о платформе SmartService NN.
-      </p>
+      <p>Ответы на популярные вопросы.</p>
     </div>
 
     <div class="faq">
 
       <div class="faq-item reveal">
-        <div class="faq-question">
-          <span>Как работает сервис?</span>
-          <span>+</span>
-        </div>
+        <div class="faq-question">Как работает сервис?</div>
         <div class="faq-answer">
-          SmartService NN помогает находить автосервисы, записываться онлайн и отслеживать обслуживание автомобиля.
+          SmartService NN помогает находить автосервисы и записываться онлайн.
         </div>
       </div>
 
       <div class="faq-item reveal">
-        <div class="faq-question">
-          <span>Сколько стоит использование?</span>
-          <span>+</span>
-        </div>
+        <div class="faq-question">Когда выйдет приложение?</div>
         <div class="faq-answer">
-          Для автовладельцев сервис будет бесплатным. Автосервисы используют подписочную модель.
+          Проект находится на стадии MVP и готовится к запуску.
         </div>
       </div>
 
       <div class="faq-item reveal">
-        <div class="faq-question">
-          <span>Когда выйдет приложение?</span>
-          <span>+</span>
-        </div>
+        <div class="faq-question">Будет ли мобильное приложение?</div>
         <div class="faq-answer">
-          Сейчас проект находится на стадии MVP. Первые приглашения получат пользователи из листа ожидания.
+          Да, планируется полноценное приложение для iOS и Android.
         </div>
       </div>
 
       <div class="faq-item reveal">
-        <div class="faq-question">
-          <span>Будет ли мобильное приложение?</span>
-          <span>+</span>
-        </div>
+        <div class="faq-question">Какие автосервисы доступны?</div>
         <div class="faq-answer">
-          Да, после запуска веб-версии планируется полноценное мобильное приложение для iOS и Android.
+          На платформе размещаются как крупные сети, так и локальные автосервисы Нижнего Новгорода.
         </div>
       </div>
 
       <div class="faq-item reveal">
-        <div class="faq-question">
-          <span>Как автосервисы подключаются к платформе?</span>
-          <span>+</span>
-        </div>
+        <div class="faq-question">Можно ли отменить запись?</div>
         <div class="faq-answer">
-          Автосервисы проходят регистрацию, получают доступ к CRM и могут принимать онлайн-записи клиентов.
+          Да, пользователь может изменить или отменить запись прямо в личном кабинете.
         </div>
       </div>
 
       <div class="faq-item reveal">
-        <div class="faq-question">
-          <span>Можно ли хранить историю обслуживания автомобиля?</span>
-          <span>+</span>
-        </div>
+        <div class="faq-question">Есть ли отзывы о сервисах?</div>
         <div class="faq-answer">
-          Да, вся история ремонтов, фотоотчеты и выполненные работы сохраняются в цифровой сервисной книжке.
+          Да, каждый пользователь может оставлять оценки и отзывы после обслуживания.
         </div>
       </div>
 
@@ -836,9 +646,7 @@
 
     <div class="section-title reveal">
       <h2>Отзывы</h2>
-      <p>
-        Что говорят пользователи о концепции платформы.
-      </p>
+      <p>Что говорят пользователи о проекте.</p>
     </div>
 
     <div class="reviews">
@@ -853,7 +661,7 @@
         </div>
 
         <p>
-          Идея выглядит очень перспективно. Особенно понравилась функция фотоотчетов и цифровой истории автомобиля.
+          Отличная идея. Особенно понравилась цифровая история автомобиля.
         </p>
       </div>
 
@@ -867,7 +675,35 @@
         </div>
 
         <p>
-          Онлайн-запись и прозрачность ремонта — именно того не хватает большинству сервисов сегодня.
+          Онлайн-запись и прозрачность ремонта выглядят очень перспективно.
+        </p>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-user">
+          <div class="avatar"></div>
+          <div>
+            <h4>Мария Кузнецова</h4>
+            <span>Mercedes-Benz C-Class</span>
+          </div>
+        </div>
+
+        <p>
+          Интерфейс выглядит очень современно. Хотелось бы пользоваться таким сервисом каждый день.
+        </p>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-user">
+          <div class="avatar"></div>
+          <div>
+            <h4>Игорь Павлов</h4>
+            <span>Toyota Camry</span>
+          </div>
+        </div>
+
+        <p>
+          Наконец-то появился сервис, где можно нормально записываться в СТО без звонков и ожидания.
         </p>
       </div>
 
@@ -881,7 +717,21 @@
         </div>
 
         <p>
-          Очень стильный и современный проект. Пользовалась бы таким приложением постоянно.
+          Фотоотчеты и история обслуживания — одна из самых полезных функций для автовладельцев.
+        </p>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-user">
+          <div class="avatar"></div>
+          <div>
+            <h4>Никита Лебедев</h4>
+            <span>Audi A5</span>
+          </div>
+        </div>
+
+        <p>
+          Проект выглядит как полноценный современный стартап. Очень качественная подача и идея.
         </p>
       </div>
 
@@ -889,13 +739,13 @@
   </div>
 </section>
 
-<section>
+<section id="access">
   <div class="container">
 
     <div class="section-title reveal">
-      <h2>Получить ранний доступ</h2>
+      <h2>Получить доступ к приложению</h2>
       <p>
-        Оставьте email и мы отправим ссылку на приложение после запуска.
+        Оставьте email и получите ссылку для доступа к приложению SmartService NN.
       </p>
     </div>
 
@@ -904,6 +754,7 @@
       <form>
         <input type="text" placeholder="Ваше имя">
         <input type="email" placeholder="Email адрес">
+
         <button class="btn btn-primary" type="submit">
           Получить приглашение
         </button>
@@ -914,14 +765,35 @@
 </section>
 
 <footer>
-  <div class="container footer-content">
+  <div class="container" id="footer-contacts" style="margin-bottom:40px;">
 
+    <div class="grid" style="display:flex; flex-direction:column; gap:16px; align-items:center;">
+
+      <div class="card contact-mini reveal">
+        <div class="icon">👾</div>
+
+        <a href="https://t.me/o_0u_u" target="_blank" class="btn btn-primary">
+          @o_0u_u
+        </a>
+      </div>
+
+      <div class="card contact-mini reveal">
+        <div class="icon">💂</div>
+
+        <a href="https://t.me/Yurii_K123" target="_blank" class="btn btn-secondary">
+          @Yurii_K123
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="container footer-content">
     <div class="logo">SmartService NN</div>
 
     <p>
       © 2026 SmartService NN. All rights reserved.
     </p>
-
   </div>
 </footer>
 
@@ -931,27 +803,16 @@
 
   function revealElements() {
     reveals.forEach(el => {
-      const windowHeight = window.innerHeight;
       const elementTop = el.getBoundingClientRect().top;
 
-      if(elementTop < windowHeight - 100) {
+      if(elementTop < window.innerHeight - 100) {
         el.classList.add('active');
       }
     });
   }
 
-  window.addEventListener('scroll', revealElements);
   revealElements();
-
-  const header = document.getElementById('header');
-
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
+  window.addEventListener('scroll', revealElements);
 
   const canvas = document.getElementById('particles');
   const ctx = canvas.getContext('2d');
@@ -1008,23 +869,6 @@
   window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-  });
-
-
-
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-    item.addEventListener('click', () => {
-
-      faqItems.forEach(otherItem => {
-        if(otherItem !== item) {
-          otherItem.classList.remove('active');
-        }
-      });
-
-      item.classList.toggle('active');
-    });
   });
 
 </script>
